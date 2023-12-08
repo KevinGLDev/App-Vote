@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #contenedorUno{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 5fr;
+            grid-template-areas: "t t t t"
+                                 "img1 img2 img3 img4";
+            gap: 5px;
+            border: solid 5px green;
+        }
+        #contenedorDos{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: solid 5px red;
+        }
+        #contenedorTres{
+            border: solid 5px orange;
+            display: flex;
+            align-items: center;
+            
+        }
+        #contenedorCuatro{
+            border: solid 5px blue;
+        }
+
+        form{
+            display: grid;
+            
+            width: 98vw;
+            height: 60vh;
+            grid-template-columns: 6fr 2fr;
+            grid-template-rows: 10fr 2fr;
+            grid-area: "c1 c2"
+                       "c3 c4";
+        }
+        img{
+            width: 140px;
+            height: 370px;
+        }
+
+        #imagenUno{
+            grid-area: img1;
+        }
+        #imagenDos{
+            grid-area: img2;
+        }
+        #imagenTres{
+            grid-area: img3;
+        }
+        #imagenCuatro{
+            grid-area: img4;
+        }
+        #titulo{
+            grid-area: t;
+            text-align: center;
+        }
+        #anuncio{
+            border: solid 10px greenyellow;
+            width: 95%;
+            height: 95%;
+        }
+        #contenedorTres label{
+            font-size: 30px;
+            margin-right: 10px;
+        }
+        #contenedorTres input{
+            width: 250px;
+            height: 30px;
+            font-size: 30px;
+        
+        }
+        #contenedorCuatro{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #input{
+            margin: 30px;
+            width: 100px;
+            height: 50px;
+            border-radius: 15px;
+            background-color: green;
+            font-size: 25px;
+        }
+        #input:hover{
+            transform: scale(1.2);
+            transition: 0.3s;
+        }
+        #reset{
+            margin: 30px;
+            width: 100px;
+            height: 50px;
+            border-radius: 15px;
+            background-color: rgb(200, 232, 200);
+            font-size: 25px;
+        }
+
+        #reset:hover{
+            background-color: green;
+        }
+
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<form>
+    <div id="contenedorUno">
+        <h2 id="titulo">Vota por tu favorito:</h2>
+        <div id="imagenUno">
+            <img src="Leo.png" alt=""> <br>
+            <input type="radio" name="votar" id="leonardo">
+            <label for="">Leonardo</label>
+        </div>
+        <div id="imagenDos">
+            <img src="Doni.png" alt=""><br>
+            <input type="radio" name="votar" id="donatelo"> 
+            <label for="">Donatelo</label>
+        </div>
+        <div id="imagenTres">
+            <img src="Rafa.png" alt=""><br>
+            <input type="radio" name="votar" id="rafael"> 
+            <label for="">Rafael</label>
+        </div>
+        <div id="imagenCuatro">
+            <img src="Mikey.png" alt=""><br>
+            <input type="radio" name="votar" id="miguel"> 
+            <label for="">Miguel Angel</label>
+        </div>
+    </div>
+    <div id="contenedorDos">
+        <span id="anuncio">
+
+        </span>
+    </div>   
+    <div id="contenedorTres">
+        <label for="">Nombre:</label>
+        <input type="text">
+    </div>
+    <div id="contenedorCuatro">
+        <input id="input" type="submit" value="Votar">
+        <input id="reset" type="reset" value="Borrar">
+    </div>
+</form>
+
+<script>
+    let contenedorAnuncio = document.querySelector("#anuncio")
+    let inputLeonardo = document.querySelector("#leonardo")
+    let inputDonatelo = document.querySelector("#donatelo")
+    let inputRafael = document.querySelector("#rafael")
+    let inputMiguel = document.querySelector("#miguel")
+
+    inputLeonardo.addEventListener("click",() => leonardo())
+    inputDonatelo.addEventListener("click",() => donatelo())
+    inputRafael.addEventListener("click",() => rafael())
+    inputMiguel.addEventListener("click",() => miguel())
+
+    function cargarImagen(url){
+        let newImg = document.createElement("img")
+        newImg.src = url
+        newImg.style.width = "100%"
+        newImg.style.height = "100%"
+        contenedorAnuncio.innerHTML = ""
+        contenedorAnuncio.appendChild(newImg)
+    }
+    cargarImagen("Vota.png")
+
+    function leonardo(){
+        cargarImagen("Leo.png")
+    }
+    function donatelo(){
+        cargarImagen("Doni.png")
+        
+    }
+    function rafael(){
+        cargarImagen("Rafa.png")
+    }
+    function miguel(){
+        cargarImagen("Mikey.png")
+    }
+
+    let btnReset = document.querySelector("#reset")
+    btnReset.addEventListener("click", () => cargarImagen("Vota.png"))
+</script>
+</html>
